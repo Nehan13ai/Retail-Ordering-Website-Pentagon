@@ -44,6 +44,11 @@ namespace RetailOrdering.WebAPI.Controllers
         [HttpGet("profile")]
         public async Task<IActionResult> GetProfile()
         {
+            foreach (var claim in User.Claims)
+            {
+                Console.WriteLine($"[Diagnostic] Claim: Type='{claim.Type}', Value='{claim.Value}'");
+            }
+
             var idClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value ?? User.FindFirst("sub")?.Value;
             if (string.IsNullOrEmpty(idClaim) || !int.TryParse(idClaim, out int customerId))
             {

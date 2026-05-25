@@ -91,7 +91,7 @@ import { ToastService } from '../../../core/services/toast.service';
                 <strong>{{ pkg.name }}</strong>
                 <p>{{ pkg.description }}</p>
               </div>
-              <span class="price-pill">{{ pkg.price === 0 ? 'Free' : '+\$' + pkg.price.toFixed(2) }}</span>
+              <span class="price-pill">{{ pkg.price === 0 ? 'Free' : '+₹' + pkg.price.toFixed(2) }}</span>
             </label>
           </div>
 
@@ -138,7 +138,7 @@ import { ToastService } from '../../../core/services/toast.service';
                 >
                 <div class="loyalty-label-text">
                   <strong>Redeem Loyalty Points</strong>
-                  <p>You have {{ customer.loyaltyPoints }} points. Use them to save up to \${{ (customer.loyaltyPoints / 100).toFixed(2) }}!</p>
+                  <p>You have {{ customer.loyaltyPoints }} points. Use them to save up to ₹{{ (customer.loyaltyPoints / 100).toFixed(2) }}!</p>
                 </div>
               </label>
             </div>
@@ -157,7 +157,7 @@ import { ToastService } from '../../../core/services/toast.service';
               </div>
               <div class="item-pricing">
                 <span class="item-qty">{{ item.quantity }}x</span>
-                <span class="item-cost">\${{ (item.unitPrice * item.quantity).toFixed(2) }}</span>
+                <span class="item-cost">₹{{ (item.unitPrice * item.quantity).toFixed(2) }}</span>
               </div>
             </div>
           </div>
@@ -165,29 +165,29 @@ import { ToastService } from '../../../core/services/toast.service';
           <div class="receipt-calculations">
             <div class="calc-row">
               <span>Cart Subtotal</span>
-              <span>\${{ subtotal.toFixed(2) }}</span>
+              <span>₹{{ subtotal.toFixed(2) }}</span>
             </div>
 
             <div class="calc-row text-success" *ngIf="couponApplied">
               <span>Coupon Discount ({{ appliedCouponCode }})</span>
-              <span>-\${{ couponDiscountAmount.toFixed(2) }}</span>
+              <span>-₹{{ couponDiscountAmount.toFixed(2) }}</span>
             </div>
 
             <div class="calc-row text-success" *ngIf="redeemPoints">
               <span>Loyalty Points Discount</span>
-              <span>-\${{ loyaltyPointsDiscount.toFixed(2) }}</span>
+              <span>-₹{{ loyaltyPointsDiscount.toFixed(2) }}</span>
             </div>
 
             <div class="calc-row">
               <span>Delivery Packaging ({{ selectedPackaging.name }})</span>
-              <span>\${{ packagingCost.toFixed(2) }}</span>
+              <span>₹{{ packagingCost.toFixed(2) }}</span>
             </div>
 
             <div class="calc-divider"></div>
 
             <div class="calc-row grand-total">
               <span>Grand Total</span>
-              <span>\${{ grandTotal.toFixed(2) }}</span>
+              <span>₹{{ grandTotal.toFixed(2) }}</span>
             </div>
 
             <div class="points-accrual">
@@ -239,7 +239,7 @@ import { ToastService } from '../../../core/services/toast.service';
               </div>
               <div class="receipt-row">
                 <span>Total Paid:</span>
-                <strong>\${{ createdOrder?.totalAmount?.toFixed(2) }}</strong>
+                <strong>₹{{ createdOrder?.totalAmount?.toFixed(2) }}</strong>
               </div>
             </div>
           </div>
@@ -718,7 +718,7 @@ export class CheckoutComponent implements OnInit {
     } else if (code === 'FREEBREAD') {
       this.couponApplied = true;
       this.appliedCouponCode = 'FREEBREAD';
-      this.toastService.showSuccess('$5.00 Flat bread discount applied to subtotal!');
+      this.toastService.showSuccess('₹5.00 Flat bread discount applied to subtotal!');
     } else if (code === 'WELCOME10') {
       this.couponApplied = true;
       this.appliedCouponCode = 'WELCOME10';
@@ -751,7 +751,7 @@ export class CheckoutComponent implements OnInit {
         .reduce((sum, i) => sum + (i.unitPrice * i.quantity), 0);
       this.couponDiscountAmount = pizzaSubtotal * 0.2;
     } else if (this.appliedCouponCode === 'FREEBREAD') {
-      // $5.00 flat discount
+      // ₹5.00 flat discount
       this.couponDiscountAmount = Math.min(this.subtotal, 5.00);
     } else if (this.appliedCouponCode === 'WELCOME10') {
       // 10% discount on subtotal
@@ -762,7 +762,7 @@ export class CheckoutComponent implements OnInit {
   get loyaltyPointsDiscount(): number {
     if (!this.redeemPoints) return 0;
     
-    // 100 points = $1.00. Points can discount subtotal minus coupon
+    // 100 points = ₹1.00. Points can discount subtotal minus coupon
     const maxRemaining = this.subtotal - this.couponDiscountAmount;
     if (maxRemaining <= 0) return 0;
 

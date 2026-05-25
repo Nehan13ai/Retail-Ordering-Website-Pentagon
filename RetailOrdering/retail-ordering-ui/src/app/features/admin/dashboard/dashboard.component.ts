@@ -134,7 +134,7 @@ interface SimulatedEmail {
                   </div>
                 </td>
                 <td>
-                  <strong class="total-tag">\${{ o.totalAmount.toFixed(2) }}</strong>
+                  <strong class="total-tag">₹{{ o.totalAmount.toFixed(2) }}</strong>
                 </td>
                 <td>
                   <div class="status-action-row">

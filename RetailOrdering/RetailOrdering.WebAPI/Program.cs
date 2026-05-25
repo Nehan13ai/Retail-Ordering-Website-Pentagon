@@ -74,9 +74,7 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = true,
         ValidAudience = builder.Configuration["Jwt:Audience"] ?? "PizzaOrderingWeb",
         ValidateLifetime = true,
-        ClockSkew = TimeSpan.Zero,
-        NameClaimType = "name",
-        RoleClaimType = "role"
+        ClockSkew = TimeSpan.Zero
     };
     options.Events = new JwtBearerEvents
     {

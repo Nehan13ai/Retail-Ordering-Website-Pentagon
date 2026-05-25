@@ -64,7 +64,7 @@ import { AuthService } from '../../core/services/auth.service';
         <div class="promo-card glass-card">
           <div class="promo-icon">🥖</div>
           <h3>FREEBREAD</h3>
-          <p>Save $5.00 flat when ordering Garlic Sourdough Breadsticks or Cheese-Stuffed Pull-Apart!</p>
+          <p>Save ₹5.00 flat when ordering Garlic Sourdough Breadsticks or Cheese-Stuffed Pull-Apart!</p>
           <div class="promo-code" (click)="copyCode('FREEBREAD')">
             Code: <span>FREEBREAD</span>
           </div>

@@ -85,7 +85,7 @@ interface CustomizationModal {
             <div class="product-footer">
               <div class="product-price">
                 <span class="price-label">Starts at</span>
-                <span class="price-value">\${{ p.basePrice.toFixed(2) }}</span>
+                <span class="price-value">₹{{ p.basePrice.toFixed(2) }}</span>
               </div>
 
               <button 
@@ -128,7 +128,7 @@ interface CustomizationModal {
                   (click)="modal.selectedSize = size"
                 >
                   <span class="size-name">{{ size.Name }}</span>
-                  <span class="size-price" *ngIf="size.PriceModifier > 0">+\${{ size.PriceModifier.toFixed(2) }}</span>
+                  <span class="size-price" *ngIf="size.PriceModifier > 0">+₹{{ size.PriceModifier.toFixed(2) }}</span>
                   <span class="size-price" *ngIf="size.PriceModifier === 0">Included</span>
                 </div>
               </div>
@@ -144,7 +144,7 @@ interface CustomizationModal {
                     [(ngModel)]="modal.selectedToppings[topping.Name]"
                   >
                   <span class="topping-name">{{ topping.Name }}</span>
-                  <span class="topping-price">+\${{ topping.Price.toFixed(2) }}</span>
+                  <span class="topping-price">+₹{{ topping.Price.toFixed(2) }}</span>
                 </label>
               </div>
             </div>
@@ -165,7 +165,7 @@ interface CustomizationModal {
                     <span class="pkg-name">{{ pkg.name }}</span>
                     <span class="pkg-desc">{{ pkg.description }}</span>
                   </div>
-                  <span class="pkg-price">{{ pkg.price === 0 ? 'Free' : '+\$' + pkg.price.toFixed(2) }}</span>
+                  <span class="pkg-price">{{ pkg.price === 0 ? 'Free' : '+₹' + pkg.price.toFixed(2) }}</span>
                 </label>
               </div>
             </div>
@@ -193,7 +193,7 @@ interface CustomizationModal {
           <div class="modal-footer-premium">
             <div class="modal-total-price">
               <span>Total Price:</span>
-              <strong>\${{ getModalTotal().toFixed(2) }}</strong>
+              <strong>₹{{ getModalTotal().toFixed(2) }}</strong>
             </div>
             
             <button class="btn-premium-outline" (click)="closeCustomization()">Cancel</button>

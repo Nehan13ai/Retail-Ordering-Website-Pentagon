@@ -95,7 +95,7 @@ interface OrderHistoryItem {
               </div>
               <div class="item-qty-cost">
                 <span>{{ item.quantity }}x</span>
-                <strong>\${{ (item.unitPrice * item.quantity).toFixed(2) }}</strong>
+                <strong>₹{{ (item.unitPrice * item.quantity).toFixed(2) }}</strong>
               </div>
             </div>
           </div>
@@ -104,21 +104,21 @@ interface OrderHistoryItem {
           <div class="order-footer-details">
             <div class="delivery-details">
               <span>📍 <strong>Deliver To:</strong> {{ order.shippingAddressStreet }}, {{ order.shippingAddressCity }}</span>
-              <span>📦 <strong>Packaging:</strong> {{ order.selectedPackagingName }} (\${{ order.selectedPackagingPrice.toFixed(2) }})</span>
+              <span>📦 <strong>Packaging:</strong> {{ order.selectedPackagingName }} (₹{{ order.selectedPackagingPrice.toFixed(2) }})</span>
             </div>
 
             <div class="pricing-breakdown">
               <div class="price-row" *ngIf="order.discountAmount > 0">
                 <span>Coupon:</span>
-                <span class="text-success">-\${{ order.discountAmount.toFixed(2) }} ({{ order.couponCode }})</span>
+                <span class="text-success">-₹{{ order.discountAmount.toFixed(2) }} ({{ order.couponCode }})</span>
               </div>
               <div class="price-row" *ngIf="order.loyaltyDiscount > 0">
                 <span>Points Used:</span>
-                <span class="text-success">-\${{ order.loyaltyDiscount.toFixed(2) }}</span>
+                <span class="text-success">-₹{{ order.loyaltyDiscount.toFixed(2) }}</span>
               </div>
               <div class="price-row grand-row">
                 <span>Total Paid:</span>
-                <strong class="text-accent">\${{ order.totalAmount.toFixed(2) }}</strong>
+                <strong class="text-accent">₹{{ order.totalAmount.toFixed(2) }}</strong>
               </div>
               <div class="points-row">
                 🪙 Earned: <strong>+{{ order.earnedLoyaltyPoints }}</strong> | Redeemed: <strong>{{ order.redeemedLoyaltyPoints }}</strong>
